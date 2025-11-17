@@ -1,15 +1,16 @@
+// src/App.tsx
 import "./App.css";
 
 const NAV_LINKS = [
-  { href: "#hero", label: "Úvod" },
+  { href: "#how-it-works", label: "Ako to funguje" },
   { href: "#ai-demo", label: "AI demo" },
   { href: "#benefits", label: "Pre koho" },
 ];
 
 const AI_SUGGESTIONS = [
-  "Ručne robíme mesačné reporty z e-shopu a účtovníctva.",
+  "Rušíme zbytočné manuálne reporty v Exceli.",
+  "Chcem vidieť denné marže z e-shopu a účtovníctva.",
   "Potrebujem strážiť cashflow z bánk a faktúr.",
-  "Chcem denný manažérsky report pre vedenie.",
 ];
 
 function App() {
@@ -32,31 +33,36 @@ function App() {
           </nav>
 
           <a href="#ai-demo" className="top-nav__cta">
-            Znížiť náklady
+            Nájsť úspory v AI deme
           </a>
         </div>
       </header>
 
       <main className="main">
-        {/* HERO S POZADÍM */}
+        {/* HERO */}
         <section id="hero" className="hero">
-          <div className="hero__bg" aria-hidden="true" />
-          <div className="hero__overlay" aria-hidden="true" />
-          <div className="hero__inner">
-            <p className="hero__eyebrow">
-              Moderná data intelligence &amp; automatizácia procesov
-            </p>
+          <p className="hero__eyebrow">
+            MODERNÁ DATA INTELLIGENCE &amp; AUTOMATIZÁCIA PROCESOV
+          </p>
 
-            <h1 className="hero__title">
-              Znížte náklady vo firme{" "}
-              <span className="hero__highlight">vlastným data asistentom</span>
-            </h1>
+          <h1 className="hero__title">
+            Znížte náklady vo firme pomocou vlastného{" "}
+            <span className="hero__highlight">data asistenta</span>
+          </h1>
 
-            <p className="hero__subtitle">
-              Povedzte, kde dnes pália náklady – AI navrhne konkrétne kroky
-              automatizácie reportov, procesov a rutinných úloh. Menej Excelu,
-              viac prehľadných rozhodnutí.
-            </p>
+          <p className="hero__subtitle">
+            DataOptic nahradí ručné reporty a prepisovanie dát automatizáciou a
+            AI. Menej Excelu, viac prehľadných rozhodnutí a konkrétnych krokov
+            na šetrenie nákladov.
+          </p>
+
+          <div className="hero__actions">
+            <a href="#ai-demo" className="btn btn--primary">
+              Spustiť AI demo
+            </a>
+            <a href="#benefits" className="btn btn--ghost">
+              Kde vieme šetriť náklady
+            </a>
           </div>
         </section>
 
@@ -66,14 +72,9 @@ function App() {
             <div className="ai-panel__header">
               <div className="ai-panel__header-left">
                 <span className="ai-panel__status-dot" />
-                <div>
-                  <div className="ai-panel__title">
-                    AI asistent na hľadanie úspor v procesoch
-                  </div>
-                  <div className="ai-panel__hint">
-                    V jednej vete popíšte, kde vo firme tušíte zbytočné náklady.
-                  </div>
-                </div>
+                <span className="ai-panel__title">
+                  AI asistent na hľadanie úspor v procesoch
+                </span>
               </div>
               <span className="ai-panel__badge">Interaktívne demo</span>
             </div>
@@ -82,7 +83,7 @@ function App() {
               <input
                 className="ai-panel__input"
                 type="text"
-                placeholder="Napr. Ručne robíme reporty z e-shopu a účtovníctva…"
+                placeholder="V jednej vete opíšte, kde vo firme tušíte zbytočné náklady…"
               />
               <button type="button" className="ai-panel__submit">
                 Navrhnúť úspory
@@ -99,39 +100,40 @@ function App() {
           </div>
         </section>
 
-        {/* BENEFITY / PRE KOHO */}
+        {/* BENEFITS */}
         <section
           id="benefits"
-          className="section section--benefits section--light"
+          className="section section--benefits"
         >
           <h2 className="section__title">Ako DataOptic šetrí náklady</h2>
           <p className="section__subtitle">
-            Namiesto ďalšieho nástroja dostanete asistenta nad vašimi dátami,
-            ktorý navrhuje konkrétne kroky – nie len grafy.
+            Zameriavame sa na firmy, ktoré už majú dáta, ale nemajú z nich
+            použiteľný obraz – alebo ich ľudia spracúvajú ručne v Exceli.
           </p>
 
           <div className="cards">
             <article className="card">
-              <h3 className="card__title">1. Kde tečú peniaze von</h3>
+              <h3 className="card__title">Kde tečú peniaze von</h3>
               <p className="card__text">
-                Identifikujeme procesy, kde ľudia trávia hodiny ručným
-                prepisovaním, exportami a kontrolou čísel.
+                Identifikujeme procesy, kde sa hodiny trávia prepisovaním dát,
+                ručnými reportmi a kontrolou čísel. Ukážeme konkrétne úspory.
               </p>
             </article>
 
             <article className="card">
-              <h3 className="card__title">2. Prepojené dáta</h3>
+              <h3 className="card__title">Prepojené dáta, jasný obraz</h3>
               <p className="card__text">
-                Prepojíme systémy (e-shop, ERP, účtovníctvo, banky) do jedného
-                dátového modelu, nad ktorým vie AI pracovať.
+                Prepojíme e-shop, ERP, účtovníctvo, banky aj interné tabule do
+                jedného dátového modelu, z ktorého vzniknú manažérske prehľady.
               </p>
             </article>
 
             <article className="card">
-              <h3 className="card__title">3. AI asistent v praxi</h3>
+              <h3 className="card__title">AI asistent v praxi</h3>
               <p className="card__text">
-                Spustíme asistenta, ktorý sleduje odchýlky, stráži cashflow a
-                navrhuje konkrétne kroky úspor.
+                Asistent sleduje odchýlky, generuje reporty a navrhuje konkrétne
+                kroky – kde škrtať, čo automatizovať a čo sa oplatí vôbec
+                nerobiť ručne.
               </p>
             </article>
           </div>
@@ -142,7 +144,7 @@ function App() {
         <div className="footer__inner">
           <span>© {new Date().getFullYear()} DataOptic</span>
           <span className="footer__dot">•</span>
-          <span>AI data asistent na znižovanie nákladov</span>
+          <span>Data intelligence &amp; automatizácia procesov</span>
         </div>
       </footer>
     </div>
