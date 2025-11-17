@@ -1,18 +1,18 @@
 import "./App.css";
 
 const NAV_LINKS = [
-  { href: "#how", label: "Ako funguje" },
-  { href: "#benefits", label: "Prínosy pre firmu" },
-  { href: "#pricing", label: "Cenník (čoskoro)" },
+  { href: "#ako-to-funguje", label: "Ako to funguje" },
+  { href: "#pre-koho", label: "Pre koho" },
+  { href: "#benefits", label: "Výhody" },
 ];
 
 const AI_SUGGESTIONS = [
-  "Zautomatizuj report marže z e-shopu a účtovníctva.",
-  "Sleduj náklady a cashflow z bánk, ERP a faktúr na jednom mieste.",
-  "Nastav denný manažérsky report pre vedenie.",
+  "Rušíme zbytočné manuálne reporty v Exceli.",
+  "Chcem vidieť denné marže z e-shopu a účtovníctva.",
+  "Potrebujem strážiť cashflow z bánk a faktúr.",
 ];
 
-export default function App() {
+function App() {
   return (
     <div className="page">
       {/* TOP NAV */}
@@ -32,7 +32,7 @@ export default function App() {
           </nav>
 
           <a href="#ai-demo" className="top-nav__cta">
-            Nájsť úspory
+            Znížiť náklady
           </a>
         </div>
       </header>
@@ -40,9 +40,11 @@ export default function App() {
       <main className="main">
         {/* HERO */}
         <section id="hero" className="hero">
+          <div className="hero__bg" />
+
           <div className="hero__content">
             <p className="hero__eyebrow">
-              MODERNÁ DATA INTELLIGENCE &amp; AUTOMATIZÁCIA PROCESOV
+              Moderná data intelligence &amp; automatizácia procesov
             </p>
 
             <h1 className="hero__title">
@@ -51,35 +53,29 @@ export default function App() {
             </h1>
 
             <p className="hero__subtitle">
-              Povedzte, kde dnes pália náklady – AI vám navrhne konkrétne kroky
-              automatizácie reportov, procesov a rutinných úloh. Menej Excelu,
-              menej prepisovania, viac peňazí na výsledku.
+              Povedzte, kde dnes pália náklady – AI vám navrhne konkrétne kroky,
+              ako automatizovať reporty, procesy a rutinné úlohy. Menej Excelu,
+              viac prehľadných rozhodnutí.
             </p>
 
             <div className="hero__actions">
               <a href="#ai-demo" className="btn btn--primary">
-                Spustiť AI demo úspor
+                Nájsť úspory v AI deme
               </a>
-              <a href="#how" className="btn btn--ghost">
-                Ako to funguje
+              <a href="#benefits" className="btn btn--ghost">
+                Kde vieme šetriť náklady
               </a>
             </div>
 
-            {/* AI PANEL priamo v hero – podobne ako ServisAI */}
+            {/* AI DEMO PANEL V HERO */}
             <section id="ai-demo" className="ai-section">
               <div className="ai-panel">
                 <div className="ai-panel__header">
                   <div className="ai-panel__header-left">
                     <span className="ai-panel__status-dot" />
-                    <div>
-                      <p className="ai-panel__title">
-                        AI asistent na hľadanie úspor v procesoch
-                      </p>
-                      <p className="ai-panel__description">
-                        V jednej vete opíšte, kde máte zbytočné náklady – AI
-                        navrhne, čo sa dá automatizovať.
-                      </p>
-                    </div>
+                    <span className="ai-panel__title">
+                      AI asistent na hľadanie úspor v procesoch
+                    </span>
                   </div>
                   <span className="ai-panel__badge">Interaktívne demo</span>
                 </div>
@@ -88,7 +84,7 @@ export default function App() {
                   <input
                     className="ai-panel__input"
                     type="text"
-                    placeholder="Napr. „Ručne robíme report marže z e-shopu a účtovníctva.“"
+                    placeholder="V jednej vete popíšte, kde vo firme tušíte zbytočné náklady…"
                   />
                   <button type="button" className="ai-panel__submit">
                     Navrhnúť úspory
@@ -107,87 +103,88 @@ export default function App() {
           </div>
         </section>
 
+        {/* SEKCIÁ – AKO TO FUNGUJE */}
+        <section id="ako-to-funguje" className="section section--how">
+          <h2 className="section__title">Ako DataOptic šetrí náklady</h2>
+          <p className="section__subtitle">
+            Namiesto ďalšieho nástroja dostanete asistenta nad vašimi dátami,
+            ktorý navrhne konkrétne kroky – nie len grafy.
+          </p>
+
+          <div className="steps">
+            <article className="step">
+              <h3 className="step__title">1. Kde tečú peniaze von</h3>
+              <p className="step__text">
+                Spolu identifikujeme procesy, kde ľudia trávia hodiny ručným
+                prepisovaním, exportami a kontrolou čísel.
+              </p>
+            </article>
+            <article className="step">
+              <h3 className="step__title">2. Prepojenie dát</h3>
+              <p className="step__text">
+                Prepojíme systémy (e-shop, ERP, účtovníctvo, banky) do jedného
+                dátového modelu, nad ktorým vie AI pracovať.
+              </p>
+            </article>
+            <article className="step">
+              <h3 className="step__title">3. AI asistent v praxi</h3>
+              <p className="step__text">
+                Spustíme asistenta, ktorý generuje reporty, upozorňuje na
+                odchýlky a navrhuje konkrétne úsporné kroky.
+              </p>
+            </article>
+          </div>
+        </section>
+
         {/* BENEFITS */}
         <section id="benefits" className="section section--benefits">
-          <h2 className="section__title">
-            Kde má data asistent najväčší prínos
-          </h2>
+          <h2 className="section__title">Kde dáva DataOptic najväčší zmysel</h2>
           <p className="section__subtitle">
-            Zameriavame sa na firmy, ktoré už majú dáta – ale míňajú čas ľudí
-            na ručné reporty, exporty a prepisovanie namiesto reálnej práce.
+            Pre firmy, ktoré už majú dáta, ale nemajú z nich jasný obraz – alebo
+            ich spracúvajú ručne v Exceli.
           </p>
 
           <div className="cards">
             <article className="card">
-              <h3 className="card__title">Kontrola nákladov v reálnom čase</h3>
+              <h3 className="card__title">Jasná kontrola nákladov</h3>
               <p className="card__text">
-                Prepojíme banky, ERP, fakturačný systém a e-shop do jedného
-                prehľadného pohľadu. Vidíte, kde odchádzajú peniaze práve teraz.
+                Vidíte marže, náklady a zisk v reálnom čase. Žiadne čakanie na
+                mesačné vyhodnotenie od účtovníctva.
               </p>
             </article>
 
             <article className="card">
-              <h3 className="card__title">Automatizované manažérske reporty</h3>
+              <h3 className="card__title">Automatizované reporty</h3>
               <p className="card__text">
-                Denné a týždenné reporty odchádzajú automaticky. Žiadne
-                „pošli mi ešte raz Excel“, žiadne nočné naháňanie čísiel.
+                Reporty chodia automaticky – denne, týždenne alebo mesačne.
+                Žiadne „Excel peklo“ a ručné prepisovanie.
               </p>
             </article>
 
             <article className="card">
-              <h3 className="card__title">Úspora času ľudí</h3>
+              <h3 className="card__title">Úspora času tímu</h3>
               <p className="card__text">
-                Asistent rieši rutinu – importy, prepočty, upozornenia. Tím sa
-                môže venovať predaju, zákazníkom a strategickým rozhodnutiam.
+                AI asistent preberá rutinu (importy, prepočty, notifikácie),
+                aby sa ľudia venovali práci s najvyššou pridanou hodnotou.
               </p>
             </article>
           </div>
         </section>
 
-        {/* HOW IT WORKS – jednoduchý placeholder */}
-        <section id="how" className="section section--how">
-          <h2 className="section__title">Ako DataOptic funguje</h2>
+        {/* PRE KOHO */}
+        <section id="pre-koho" className="section section--who">
+          <h2 className="section__title">Pre koho je DataOptic</h2>
           <p className="section__subtitle">
-            Najprv identifikujeme, kde vám utekajú peniaze, potom pripojíme
-            zdroje dát a nakoniec nasadíme AI asistenta na vaše konkrétne
-            procesy.
+            Najväčší efekt prinášame firmám s obratom, kde už aj malé percento
+            úspory znamená výrazné peniaze.
           </p>
 
-          <div className="steps">
-            <div className="step">
-              <span className="step__badge">1</span>
-              <h3 className="step__title">Audit nákladov a procesov</h3>
-              <p className="step__text">
-                Spoločne zmapujeme, kde robíte ručnú prácu – reporty, exporty,
-                prepisovanie, schvaľovanie.
-              </p>
-            </div>
-            <div className="step">
-              <span className="step__badge">2</span>
-              <h3 className="step__title">Prepojenie dát</h3>
-              <p className="step__text">
-                Prepojíme banky, ERP, CRM, e-shop a ďalšie systémy do jednej
-                dátovej vrstvy.
-              </p>
-            </div>
-            <div className="step">
-              <span className="step__badge">3</span>
-              <h3 className="step__title">Nasadenie AI asistenta</h3>
-              <p className="step__text">
-                Nastavíme AI asistenta, ktorý sleduje čísla, generuje reporty a
-                upozorní, keď sa niečo vymyká z normálu.
-              </p>
-            </div>
+          <div className="chips-row">
+            <span className="chip">E-shopy s vlastným skladom</span>
+            <span className="chip">Výrobná a logistická firma</span>
+            <span className="chip">Služby s veľkým tímom</span>
+            <span className="chip">Multi-pobočkové firmy</span>
           </div>
-        </section>
-
-        {/* PRICING PLACEHOLDER */}
-        <section id="pricing" className="section section--pricing">
-          <h2 className="section__title">Cenník</h2>
-          <p className="section__subtitle">
-            Neplatíte za licencie navyše – nastavíme jednoduchý model na mieru
-            podľa počtu napojených systémov a rozsahu automatizácie.
-          </p>
         </section>
       </main>
 
@@ -195,9 +192,11 @@ export default function App() {
         <div className="footer__inner">
           <span>© {new Date().getFullYear()} DataOptic</span>
           <span className="footer__dot">•</span>
-          <span>Pomáhame firmám znížiť náklady pomocou dát a AI</span>
+          <span>AI pre znižovanie nákladov a lepšie rozhodnutia</span>
         </div>
       </footer>
     </div>
   );
 }
+
+export default App;
