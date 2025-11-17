@@ -1,145 +1,216 @@
+import React from "react";
 import "./App.css";
+
+const NAV_LINKS = [
+  { href: "#services", label: "Služby" },
+  { href: "#how-we-work", label: "Ako pracujeme" },
+  { href: "#for-whom", label: "Pre koho" },
+];
 
 function App() {
   return (
     <div className="page">
-      <header className="nav">
-        <div className="nav__logo">DataOptic</div>
-        <nav className="nav__links">
-          <a href="#services">Služby</a>
-          <a href="#process">Ako pracujeme</a>
-          <a href="#clients">Pre koho</a>
-        </nav>
-        <a href="#contact" className="nav__cta">
-          Dohodnúť konzultáciu
-        </a>
+      {/* TOP NAV */}
+      <header className="top-nav">
+        <div className="top-nav__inner">
+          <a href="#hero" className="logo">
+            <span className="logo__dot" />
+            <span className="logo__text">DATAOPTIC</span>
+          </a>
+
+          <nav className="main-nav">
+            {NAV_LINKS.map((item) => (
+              <a key={item.href} href={item.href} className="main-nav__link">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <a href="#contact" className="btn btn--ghost">
+            Dohodnúť konzultáciu
+          </a>
+        </div>
       </header>
 
       <main>
         {/* HERO */}
-        <section className="hero">
+        <section id="hero" className="hero">
           <div className="hero__content">
-            <h1>
-              Data intelligence &amp; automatizácia,
+            <p className="hero__badge">
+              <span className="hero__badge-dot" />
+              Moderná data intelligence & automatizácia procesov
+            </p>
+
+            <h1 className="hero__headline">
+              Data intelligence & automatizácia,
               <br />
               ktorá šetrí čas aj peniaze
             </h1>
-            <p>
-              Pomáhame firmám vidieť svoje dáta jasne,
-              odhaliť úzke hrdlá a automatizovať rutinné procesy.
-              Bez zbytočného korporátneho balastu, priamo k výsledkom.
+
+            <p className="hero__sub">
+              Pomáhame firmám vidieť svoje dáta jasne, odhaliť úzke hrdlá a
+              automatizovať rutinné procesy. Bez zbytočného korporátneho
+              balastu, priamo k výsledkom.
             </p>
+
             <div className="hero__actions">
               <a href="#contact" className="btn btn--primary">
                 Chcem nezáväzný call
               </a>
-              <a href="#services" className="btn btn--ghost">
+              <a href="#services" className="btn btn--secondary">
                 Čo presne robíme
               </a>
             </div>
+
             <p className="hero__note">
               ⚡ Prvé odporúčania do 7 dní od úvodného workshopu.
             </p>
           </div>
         </section>
 
-        {/* SLUŽBY / BENEFITY */}
-        <section id="services" className="section">
-          <h2>Čo vám DataOptic prinesie</h2>
-          <div className="grid">
-            <div className="card">
+        {/* BENEFITS */}
+        <section id="services" className="section section--padded">
+          <div className="section__header">
+            <h2>Čo vám DataOptic prinesie</h2>
+          </div>
+
+          <div className="grid grid--3">
+            <article className="card">
               <h3>Jasný obraz o biznise</h3>
               <p>
                 Prepojíme dáta z rôznych systémov do jedného prehľadného
                 dashboardu. Manažérske čísla bez ručného exportovania.
               </p>
-            </div>
-            <div className="card">
+            </article>
+
+            <article className="card">
               <h3>Automatizované reporty</h3>
               <p>
                 Reporty odchádzajú automaticky – denne, týždenne alebo mesačne.
                 Žiadne Excel peklo, žiadne ručné prepisovanie.
               </p>
-            </div>
-            <div className="card">
+            </article>
+
+            <article className="card">
               <h3>Úspora času ľudí</h3>
               <p>
                 Automatizujeme rutinu (importy, prepočty, notifikácie), aby sa
-                ľudia mohli venovať tomu, čo tvorí skutočnú hodnotu.
+                váš tím venoval tomu, čo tvorí skutočnú hodnotu.
               </p>
-            </div>
+            </article>
           </div>
         </section>
 
-        {/* PROCES */}
-        <section id="process" className="section section--alt">
-          <h2>Ako s vami budeme spolupracovať</h2>
+        {/* HOW WE WORK */}
+        <section id="how-we-work" className="section section--padded">
+          <div className="section__header">
+            <h2>Ako s vami budeme spolupracovať</h2>
+          </div>
+
           <ol className="steps">
-            <li>
-              <span>Krok 1</span>
-              Úvodný online call (30–45 min), kde si ujasníme aktuálny stav a cieľ.
+            <li className="steps__item">
+              <span className="steps__badge">KROK 1</span>
+              <h3>Úvodný online call (30–45 min)</h3>
+              <p>
+                Pochopíme biznis, systémy a cieľ. Žiadny sales tlak, iba
+                konkrétne otázky a prvé nápady.
+              </p>
             </li>
-            <li>
-              <span>Krok 2</span>
-              Rýchly audit dát a procesov – identifikujeme 2–3 najväčšie príležitosti.
+
+            <li className="steps__item">
+              <span className="steps__badge">KROK 2</span>
+              <h3>Workshop & návrh riešenia</h3>
+              <p>
+                Detailne zmapujeme toky dát, úzke hrdlá a manuálne úlohy. Dostanete
+                návrh architektúry a hrubý odhad prínosu.
+              </p>
             </li>
-            <li>
-              <span>Krok 3</span>
-              Návrh riešenia + odhad prínosu a nákladov. Rozhodnete sa, či ideme ďalej.
+
+            <li className="steps__item">
+              <span className="steps__badge">KROK 3</span>
+              <h3>Implementácia na etapy</h3>
+              <p>
+                Začíname od najrýchlejšieho prínosu. Každá etapa má jasný cieľ,
+                deadline a zodpovednosti na oboch stranách.
+              </p>
             </li>
-            <li>
-              <span>Krok 4</span>
-              Implementácia, testovanie a jednoduché školenie vášho tímu.
+
+            <li className="steps__item">
+              <span className="steps__badge">KROK 4</span>
+              <h3>Monitoring & priebežný rozvoj</h3>
+              <p>
+                Sledujeme využitie riešenia, dopĺňame nové pohľady a automatizácie
+                podľa toho, čo firmu najviac bolí.
+              </p>
             </li>
           </ol>
         </section>
 
-        {/* PRE KOHO */}
-        <section id="clients" className="section">
-          <h2>Pre koho je DataOptic ideálny</h2>
-          <div className="grid grid--two">
-            <div className="card">
-              <h3>SME a menšie firmy</h3>
+        {/* FOR WHOM */}
+        <section id="for-whom" className="section section--padded">
+          <div className="section__header">
+            <h2>Pre koho je DataOptic</h2>
+            <p>
+              Najviac hodnoty prinášame firmám, ktoré už majú dáta, ale nemajú z
+              nich použiteľný obraz.
+            </p>
+          </div>
+
+          <div className="grid grid--3">
+            <article className="card card--tagged">
+              <span className="card__tag">B2B služby & agentúry</span>
               <p>
-                Rastiete, pribúda administratíva a cítite, že Excel už nestačí.
-                Chcete mať čísla pod kontrolou bez budovania veľkého IT oddelenia.
+                Sledujete výkon kampaní, projektov alebo accountov v rôznych
+                nástrojoch a potrebujete jeden jasný pohľad.
               </p>
-            </div>
-            <div className="card">
-              <h3>Oddelenia vo väčších firmách</h3>
+            </article>
+
+            <article className="card card--tagged">
+              <span className="card__tag">E-commerce & retail</span>
               <p>
-                Potrebujete rýchle, pragmatické riešenie mimo dlhé
-                korporátne projekty. Hľadáte partnera, ktorý hovorí „po
-                ľudsky“ a doručuje.
+                Prepojenie e-shopu, ERP, marketingu a logistiky do jedného
+                dashboardu – marža, sklad, cashflow, zákazníci.
               </p>
-            </div>
+            </article>
+
+            <article className="card card--tagged">
+              <span className="card__tag">Výroba & prevádzka</span>
+              <p>
+                OEE, prestoje, kvalita, náklady. Z výrobných dát spravíme
+                prehľadné reporty pre management aj líniových manažérov.
+              </p>
+            </article>
           </div>
         </section>
 
-        {/* KONTAKT / CTA */}
-        <section id="contact" className="section section--highlight">
-          <div className="contact">
-            <h2>Poďme sa pozrieť na vaše dáta</h2>
+        {/* FINAL CTA */}
+        <section id="contact" className="section section--cta">
+          <div className="section__header section__header--center">
+            <h2>Chcete vidieť svoje dáta jasne?</h2>
             <p>
-              Napíšte pár viet o firme a probléme, ktorý riešite.
-              Ozveme sa vám s návrhom termínu krátkeho online callu.
+              Poďme si dať krátky call. Povieme vám úprimne, či vieme priniesť
+              reálny efekt – alebo nie.
             </p>
-            <a href="mailto:oblozinskyroman8@gmail.com" className="btn btn--primary">
+          </div>
+
+          <div className="cta-actions">
+            <a href="mailto:info@dataoptic.sk" className="btn btn--primary">
               Napísať e-mail
             </a>
-            <p className="contact__meta">
-              Alebo priamo e-mail:{" "}
-              <a href="mailto:oblozinskyroman8@gmail.com">
-                oblozinskyroman8@gmail.com
-              </a>
-            </p>
+            <a href="#hero" className="btn btn--secondary">
+              Vrátiť sa hore
+            </a>
           </div>
         </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="footer">
-        <span>© {new Date().getFullYear()} DataOptic</span>
-        <span>Data intelligence &amp; automatizácia procesov</span>
+        <div className="footer__inner">
+          <span>© {new Date().getFullYear()} DataOptic</span>
+          <span className="footer__dot">•</span>
+          <span>Data intelligence & automatizácia procesov</span>
+        </div>
       </footer>
     </div>
   );
