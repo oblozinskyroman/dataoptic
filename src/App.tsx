@@ -1,43 +1,45 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 const NAV_LINKS = [
   { href: "#hero", label: "Úvod" },
   { href: "#ai-demo", label: "AI demo" },
-  { href: "#savings", label: "Úspora nákladov" },
   { href: "#benefits", label: "Pre koho" },
 ];
 
 const AI_SUGGESTIONS = [
-  "Zautomatizuj mesačný reporting nákladov a marže.",
-  "Spoj banky, ERP a faktúry do jedného cashflow prehľadu.",
+  "Zautomatizuj mesačný report marže z e-shopu a účtovníctva.",
+  "Sleduj cashflow z bánk, ERP a faktúr na jednom mieste.",
   "Nastav denný manažérsky report pre vedenie.",
 ];
 
 function App() {
-  const [aiInput, setAiInput] = useState("");
-  const [aiHint, setAiHint] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const [demoResult, setDemoResult] = useState<string | null>(null);
 
-  const handleChipClick = (text: string) => {
-    setAiInput(text);
-    setAiHint(
-      "Toto je iba demo. V ostrej verzii tu bude návrh riešenia na mieru pre vašu firmu."
+  const handleRunDemo = () => {
+    if (!prompt.trim()) return;
+
+    setDemoResult(
+      "Prvý krok by bol prepojiť vaše existujúce systémy (e-shop, účtovníctvo, banky) do jedného dátového zdroja. " +
+        "Nad tým nastavíme pravidelné prepočty a automatické reporty, aby ste videli náklady a marže v reálnom čase " +
+        "bez ručného prepisovania."
     );
   };
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    if (!aiInput.trim()) return;
+  const handleSuggestionClick = (text: string) => {
+    setPrompt(text);
+    setDemoResult(
+      "Takéto zadanie by sme rozbili na konkrétne kroky: definovať zdroje dát, nastaviť integrácie, vytvoriť prehľadný dashboard " +
+        "a automatické notifikácie pri odchýlkach. Cieľ: menej ručnej práce, menej chýb a jasný obraz o nákladoch."
+    );
+  };
 
-    setIsSubmitting(true);
-    // jednoduché front-end demo, žiadny backend
-    setTimeout(() => {
-      setAiHint(
-        "Ukážková odpoveď: DataOptic zoberie vaše existujúce systémy, prepojí ich a postaví nad nimi AI asistenta, ktorý denne sleduje náklady a upozorní na odchýlky."
-      );
-      setIsSubmitting(false);
-    }, 450);
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleRunDemo();
+    }
   };
 
   return (
@@ -59,7 +61,7 @@ function App() {
           </nav>
 
           <a href="#ai-demo" className="top-nav__cta">
-            Spustiť AI asistenta
+            Nájsť úspory v AI deme
           </a>
         </div>
       </header>
@@ -72,40 +74,29 @@ function App() {
           </p>
 
           <h1 className="hero__title">
-            Znížte náklady s{" "}
-            <span className="hero__highlight">vlastným data asistentom</span>
+            Znížte náklady s vlastným{" "}
+            <span className="hero__highlight">data asistentom</span>
           </h1>
 
           <p className="hero__subtitle">
-            DataOptic prepája vaše systémy a AI tak, aby ste menej platili za
-            rutinu – a viac mohli investovať do rastu firmy.
+            Pomôžeme vám nahradiť ručné reporty a prepisovanie dát
+            automatizáciou a AI. Menej Excelu, viac prehľadných rozhodnutí.
           </p>
 
           <div className="hero__actions">
             <a href="#ai-demo" className="btn btn--primary">
-              Vyskúšať AI demo
+              Nájsť úspory v AI deme
             </a>
-            <a href="#savings" className="btn btn--ghost">
-              Ako šetríme náklady
+            <a href="#benefits" className="btn btn--ghost">
+              Kde vieme šetriť náklady
             </a>
           </div>
 
-          <div className="hero__metrics">
-            <div className="hero__metric">
-              <span className="hero__metric-value">-30 %</span>
-              <span className="hero__metric-label">čas na reporting</span>
-            </div>
-            <div className="hero__metric">
-              <span className="hero__metric-value">-20 %</span>
-              <span className="hero__metric-label">operatívne náklady</span>
-            </div>
-            <div className="hero__metric">
-              <span className="hero__metric-value">+1 deň</span>
-              <span className="hero__metric-label">
-                náskok v prehľade cashflow
-              </span>
-            </div>
-          </div>
+          <ul className="hero__bullets">
+            <li className="hero__bullet">Odhalíme, kde odchádzajú peniaze.</li>
+            <li className="hero__bullet">Automatizujeme rutinné reporty.</li>
+            <li className="hero__bullet">Prepojíme dáta z rôznych systémov.</li>
+          </ul>
         </section>
 
         {/* AI DEMO PANEL */}
@@ -115,24 +106,29 @@ function App() {
               <div className="ai-panel__header-left">
                 <span className="ai-panel__status-dot" />
                 <span className="ai-panel__title">
-                  AI asistent pre znižovanie nákladov
+                  AI asistent na hľadanie úspor v procesoch
                 </span>
               </div>
               <span className="ai-panel__badge">Interaktívne demo</span>
             </div>
 
-            <form className="ai-panel__body" onSubmit={handleSubmit}>
+            <div className="ai-panel__body">
               <input
                 className="ai-panel__input"
                 type="text"
-                value={aiInput}
-                onChange={(e) => setAiInput(e.target.value)}
-                placeholder="Opíšte v jednej vete, kde teraz vo firme míňate zbytočne veľa času alebo peňazí…"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="V jednej vete popíšte, kde vo firme tušíte zbytočné náklady…"
               />
-              <button type="submit" className="ai-panel__submit">
-                {isSubmitting ? "Spracovávam…" : "Navrhnúť riešenie"}
+              <button
+                type="button"
+                className="ai-panel__submit"
+                onClick={handleRunDemo}
+              >
+                Navrhnúť úspory
               </button>
-            </form>
+            </div>
 
             <div className="ai-panel__suggestions">
               {AI_SUGGESTIONS.map((text) => (
@@ -140,49 +136,19 @@ function App() {
                   key={text}
                   type="button"
                   className="ai-chip"
-                  onClick={() => handleChipClick(text)}
+                  onClick={() => handleSuggestionClick(text)}
                 >
                   {text}
                 </button>
               ))}
             </div>
 
-            {aiHint && <p className="ai-panel__hint">{aiHint}</p>}
-          </div>
-        </section>
-
-        {/* SAVINGS SECTION */}
-        <section id="savings" className="section section--savings">
-          <h2 className="section__title">Ako vám znižujeme náklady</h2>
-          <p className="section__subtitle">
-            Nepridávame ďalší systém. Zmysel má len to, čo zníži ľudskú prácu,
-            duplicitu a riziko chýb.
-          </p>
-
-          <div className="savings-grid">
-            <article className="saving">
-              <h3 className="saving__title">Automatizácia rutiny</h3>
-              <p className="saving__text">
-                Importy, exporty, prepočty, párovanie platieb, upozornenia –
-                všetko, čo opakujete, sa dá zautomatizovať.
-              </p>
-            </article>
-
-            <article className="saving">
-              <h3 className="saving__title">Jedna pravda o číslach</h3>
-              <p className="saving__text">
-                Namiesto desiatok Excelov jeden centrálny zdroj pravdy. Menej
-                chaosu, menej chýb, rýchlejšie rozhodnutia.
-              </p>
-            </article>
-
-            <article className="saving">
-              <h3 className="saving__title">Manažérsky pohľad na náklady</h3>
-              <p className="saving__text">
-                Každé ráno jasné čísla: kde rastú náklady, kde klesá marža, kde
-                unikajú peniaze.
-              </p>
-            </article>
+            {demoResult && (
+              <div className="ai-panel__result">
+                <p className="ai-panel__result-label">Ukážka návrhu riešenia</p>
+                <p className="ai-panel__result-text">{demoResult}</p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -190,16 +156,16 @@ function App() {
         <section id="benefits" className="section section--benefits">
           <h2 className="section__title">Kde dáva DataOptic najväčší zmysel</h2>
           <p className="section__subtitle">
-            Firmy, ktoré už majú dáta, ale nemajú z nich použiteľný obraz – alebo
-            ich ľudia stále spracúvajú ručne v Exceli.
+            Zameriavame sa na firmy, ktoré už majú dáta, ale nemajú z nich
+            použiteľný obraz – alebo ich spracúvajú ručne v Exceli.
           </p>
 
           <div className="cards">
             <article className="card">
-              <h3 className="card__title">Jasný obraz o biznise</h3>
+              <h3 className="card__title">Jasný obraz o nákladoch</h3>
               <p className="card__text">
                 Prepojíme dáta z rôznych systémov do prehľadných dashboardov.
-                Manažérske čísla bez ručného exportovania.
+                Vidíte marže, náklady a zisk v reálnom čase.
               </p>
             </article>
 
