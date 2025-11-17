@@ -440,3 +440,80 @@ body {
     flex-direction: column;
   }
 }
+/* === WIDER LAYOUT & SPACING TUNING =================================== */
+
+/* Celá stránka – širší stĺpec a centrovanie */
+.page {
+  max-width: 1240px;      /* pôvodne si mal užší kontajner */
+  margin: 0 auto;         /* centrovanie */
+  padding: 24px 40px 80px;
+}
+
+/* Hero sekcia – viac priestoru hore, nech to nedýcha od samotného topu */
+.hero {
+  padding-top: 80px;
+  padding-bottom: 56px;
+}
+
+/* Text v hero – môže byť o kúsok širší */
+.hero__content {
+  max-width: 640px;
+}
+
+/* Sekcie pod sebou – konzistentný vertikálny rytmus */
+.section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/* Karty – rovnomerné 3 stĺpce na väčších displejoch */
+.grid--3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* CTA sekcia trochu užšia, aby text nesedel úplne na krajoch */
+.section--cta .section__header--center,
+.section--cta .cta-actions {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Footer – zarovnať s obsahom */
+.footer__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+/* RESPONSIVE – na menších obrazovkách nech je všetko voľnejšie a single-column */
+@media (max-width: 1100px) {
+  .page {
+    max-width: 100%;
+    padding: 16px 24px 64px;
+  }
+
+  .hero {
+    padding-top: 56px;
+  }
+
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 12px 16px 56px;
+  }
+
+  .hero__headline {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+}
