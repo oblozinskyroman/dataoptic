@@ -281,3 +281,139 @@ a {
     padding: 32px 6%;
   }
 }
+/* Layout stránky */
+.page {
+  min-height: 100vh;
+}
+
+/* Horné menu */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.top-nav__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Logo a navigácia */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.logo__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #4f46e5;
+}
+
+.logo__text {
+  color: #e5e7eb;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.main-nav__link {
+  text-decoration: none;
+  color: #9ca3af;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.main-nav__link:hover {
+  color: #e5e7eb;
+}
+
+/* Tlačidlá v headeri */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+/* Hero + sekcie – zarovnanie do jedného stĺpca */
+.hero,
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.hero__content,
+.section__header,
+.grid,
+.steps,
+.section__header--center,
+.cta-actions,
+.footer__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Anchor skrolovanie pod sticky header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 1.5rem 1.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.footer__dot {
+  opacity: 0.6;
+}
